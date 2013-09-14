@@ -1,0 +1,19 @@
+{
+  "name": "remi",
+  "version": "0.0.0",
+  "description": "Ross' Enticing MySQL Interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Ross",
+    "Hadden",
+    "MySQL"
+  ],
+  "author": "Ross Hadden",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "cornerstone": "git://github.com/ConnectAi/node-framework.git"
+  }
+}
