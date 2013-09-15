@@ -10,6 +10,12 @@ var config = {
 			password: "root",
 			database: "surrogate"
 		}
+	},
+
+	env: {
+		development: {
+			debug: true
+		}
 	}
 }
 

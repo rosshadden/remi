@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{server.name}} | {{action}} {{controller}} {{id}}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		{{{block "styles"}}}
+	</head>
+
+	<body>
+		{{{body}}}
+
+		<script>
+			window.CS = {{{json exposed}}};
+		</script>
+
+		{{{block "scripts"}}}
+	</body>
+</html>

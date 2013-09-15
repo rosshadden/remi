@@ -4,7 +4,7 @@ module.exports = {
 			show databases
 		`)
 		.then((data) => {
-			res.json(data);
+			res.view(data);
 		});
 	}
 };
