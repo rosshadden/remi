@@ -3,6 +3,8 @@
 	<head>
 		<title>{{server.name}} | {{action}} {{controller}} {{id}}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 		{{{block "styles"}}}
 	</head>
 
@@ -13,6 +15,9 @@
 			window.CS = {{{json exposed}}};
 		</script>
 
+		<script src="/js/lib/jquery.min.js"></script>
+		<script src="/js/lib/bootstrap.min.js"></script>
+		<script src="/js/lib/handlebars.min.js"></script>
 		{{{block "scripts"}}}
 	</body>
 </html>
