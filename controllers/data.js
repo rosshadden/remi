@@ -4,9 +4,7 @@ module.exports = {
 			show tables
 		`)
 		.then((tables) => {
-			res.view({
-				tables
-			});
+			res.json(tables);
 		});
 	}
 };

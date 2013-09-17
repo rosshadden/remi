@@ -4,13 +4,24 @@
 
 <div class="row">
 	<aside class="col-md-2">
-		<label for="database">Database</label>
-		<select id="database" class="form-control">
-			<option></option>
-			{{#each databases}}
-				<option>{{Database}}</option>
-			{{/each}}
-		</select>
+		<div class="row">
+			<div class="col-md-12">
+				<label for="database">Database</label>
+				<select id="database" class="form-control">
+					<option></option>
+					{{#each databases}}
+						<option>{{Database}}</option>
+					{{/each}}
+				</select>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<label for="table">Table</label>
+				<select id="table" class="form-control"></select>
+			</div>
+		</div>
 	</aside>
 
 	<div class="col-md-8">
