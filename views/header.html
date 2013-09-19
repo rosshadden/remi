@@ -1,21 +1,38 @@
 <header class="container">
-	<nav class="navbar navbar-default" role="navigation">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="/">REMI</a>
-		</div>
-	</nav>
+	<div class="page-header">
+		<h1>REMI <small>Ross' Enticing MySQL Interface</small></h1>
+	</div>
 
 	<ol class="breadcrumb">
 		<li><a href="/">Home</a></li>
-		<li><a href="/database/list">Databases</a></li>
-		<li><a href="/database/view/{{session.database}}">Tables</a></li>
+		<li>
+			<div class="btn-group">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+					Database <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="/database/list">List</a></li>
+					<li class="divider"></li>
+					{{#each session.databases}}
+						<li><a href="/database/view/{{this}}">{{this}}</a></li>
+					{{/each}}
+				</ul>
+			</div>
+		</li>
+		<li>
+			<div class="btn-group">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+					Table <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="/database/view/{{session.database}}">List</a></li>
+					<li class="divider"></li>
+					{{#each session.tables}}
+						<li><a href="/table/view/{{this}}">{{this}}</a></li>
+					{{/each}}
+				</ul>
+			</div>
+		</li>
 		<li class="active">aoeu</li>
 	</ol>
 </header>

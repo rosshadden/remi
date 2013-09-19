@@ -8,9 +8,10 @@ module.exports = {
 			show databases
 		`)
 		.then((databases) => {
-			res.view({
-				databases: databases.map((db) => (db.Database))
-			});
+			databases = databases.map((db) => (db.Database));
+			req.session.databases = databases;
+
+			res.view({ databases });
 		});
 	},
 
@@ -28,13 +29,14 @@ module.exports = {
 					show tables
 				`)
 				.then((tables) => {
-					res.view({
-						tables: tables.map((table) => {
-							for (let key in table) {
-								return table[key];
-							}
-						})
+					tables = tables.map((table) => {
+						for (let key in table) {
+							return table[key];
+						}
 					});
+					req.session.tables = tables;
+
+					res.view({ tables });
 				});
 			});
 		} else {
