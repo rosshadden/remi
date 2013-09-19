@@ -5,6 +5,7 @@
 
 	<ol class="breadcrumb">
 		<li><a href="/">Home</a></li>
+
 		<li>
 			<div class="btn-group">
 				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -14,11 +15,12 @@
 					<li><a href="/database/list">List</a></li>
 					<li class="divider"></li>
 					{{#each session.databases}}
-						<li><a href="/database/view/{{this}}">{{this}}</a></li>
+						<li {{#iff this "is" ../session.database}}class="active"{{/iff}}><a href="/database/view/{{this}}">{{this}}</a></li>
 					{{/each}}
 				</ul>
 			</div>
 		</li>
+
 		<li>
 			<div class="btn-group">
 				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -28,11 +30,12 @@
 					<li><a href="/database/view/{{session.database}}">List</a></li>
 					<li class="divider"></li>
 					{{#each session.tables}}
-						<li><a href="/table/view/{{this}}">{{this}}</a></li>
+						<li {{#iff this "is" ../session.table}}class="active"{{/iff}}><a href="/table/view/{{this}}">{{this}}</a></li>
 					{{/each}}
 				</ul>
 			</div>
 		</li>
+
 		<li class="active">aoeu</li>
 	</ol>
 </header>

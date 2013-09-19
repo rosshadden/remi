@@ -3,6 +3,8 @@ module.exports = {
 		var table = req.params.id;
 
 		if (table) {
+			req.session.table = table;
+
 			app.db.query(`
 				select * from ${table}
 			`)

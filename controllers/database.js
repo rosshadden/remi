@@ -4,6 +4,8 @@ module.exports = {
 	},
 
 	list(req, res) {
+		delete req.session.database;
+		delete req.session.table;
 		app.db.query(`
 			show databases
 		`)
@@ -17,6 +19,7 @@ module.exports = {
 
 	view(req, res) {
 		var database = req.params.id;
+		delete req.session.table;
 
 		if (database) {
 			req.session.database = database;
