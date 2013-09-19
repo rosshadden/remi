@@ -4,7 +4,9 @@
 	<thead>
 		<tr>
 			{{#each cols}}
-				<th>{{Field}}&nbsp;<small class="text-info">{{Type}}</small></th>
+				<th {{#iff Key "is" "PRI"}}class="text-primary"{{/iff}}>
+					{{Field}}&nbsp;<small class="text-muted">{{Type}}</small>
+				</th>
 			{{/each}}
 		</tr>
 	</thead>
