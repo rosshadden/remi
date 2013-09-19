@@ -1,5 +1,9 @@
 module.exports = {
 	index(req, res) {
+		res.redirect("list")
+	},
+
+	list(req, res) {
 		app.db.query(`
 			show databases
 		`)
