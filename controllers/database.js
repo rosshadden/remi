@@ -9,7 +9,7 @@ module.exports = {
 		`)
 		.then((databases) => {
 			res.view({
-				databases
+				databases: databases.map((db) => (db.Database))
 			});
 		});
 	}

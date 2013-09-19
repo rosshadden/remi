@@ -1,9 +1,5 @@
-{{#extend "scripts"}}
-	<script src="/js/interface/index.js"></script>
-{{/extend}}
-
 <ul class="nav nav-pills nav-stacked">
 	{{#each databases}}
-		<li><a href="view/{{@index}}">{{Database}}</a></li>
+		<li><a href="view/{{@index}}">{{this}}</a></li>
 	{{/each}}
 </ul>
