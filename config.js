@@ -7,8 +7,7 @@ var config = {
 		mysql: {
 			host: "localhost",
 			user: "root",
-			password: "root",
-			database: "surrogate"
+			password: "root"
 		}
 	},
 
