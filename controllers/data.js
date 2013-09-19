@@ -1,10 +1,15 @@
 module.exports = {
 	"get tables"(req, res) {
-		app.db.query(`
-			show tables
-		`)
-		.then((tables) => {
-			res.json(tables);
+		app.db.change({
+			database: req.query.database
+		})
+		.then((err) => {
+			app.db.query(`
+				show tables
+			`)
+			.then((tables) => {
+				res.json(tables);
+			});
 		});
 	}
 };
