@@ -1,4 +1,4 @@
-var databases =
+var list;
 
 module.exports = {
 	index(req, res) {
@@ -10,15 +10,16 @@ module.exports = {
 			show databases
 		`)
 		.then((databases) => {
+			list = databases.map((db) => (db.Database));
 			res.view({
-				databases: databases.map((db) => (db.Database))
+				databases: list
 			});
 		});
 	},
 
 	view(req, res) {
 		app.db.change({
-			database: req.query.database
+			database: list[req.params.id]
 		})
 		.then((err) => {
 			app.db.query(`
