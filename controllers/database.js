@@ -6,6 +6,8 @@ module.exports = {
 	list(req, res) {
 		delete req.session.database;
 		delete req.session.table;
+		delete req.session.tables;
+
 		app.db.query(`
 			show databases
 		`)

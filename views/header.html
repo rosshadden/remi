@@ -6,36 +6,47 @@
 	<ol class="breadcrumb">
 		<li><a href="/">Home</a></li>
 
-		<li>
-			<div class="btn-group">
-				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-					Database <span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu" role="menu">
-					<li><a href="/database/list">List</a></li>
-					<li class="divider"></li>
-					{{#each session.databases}}
-						<li {{#iff this "is" ../session.database}}class="active"{{/iff}}><a href="/database/view/{{this}}">{{this}}</a></li>
-					{{/each}}
-				</ul>
-			</div>
-		</li>
+		{{#if session.databases}}
+			<li>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						{{#if session.database}}
+							{{session.database}}
+						{{else}}
+							Databases
+						{{/if}}
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="/database/list">List Databases</a></li>
+						<li class="divider"></li>
+						{{#each session.databases}}
+							<li {{#iff this "is" ../session.database}}class="active"{{/iff}}><a href="/database/view/{{this}}">{{this}}</a></li>
+						{{/each}}
+					</ul>
+				</div>
+			</li>
 
-		<li>
-			<div class="btn-group">
-				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-					Table <span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu" role="menu">
-					<li><a href="/database/view/{{session.database}}">List</a></li>
-					<li class="divider"></li>
-					{{#each session.tables}}
-						<li {{#iff this "is" ../session.table}}class="active"{{/iff}}><a href="/table/view/{{this}}">{{this}}</a></li>
-					{{/each}}
-				</ul>
-			</div>
-		</li>
-
-		<li class="active">aoeu</li>
+			{{#if session.tables}}
+				<li>
+					<div class="btn-group">
+						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							{{#if session.table}}
+								{{session.table}}
+							{{else}}
+								Tables
+							{{/if}}
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="/database/view/{{session.database}}">List Tables</a></li>
+							<li class="divider"></li>
+							{{#each session.tables}}
+								<li {{#iff this "is" ../session.table}}class="active"{{/iff}}><a href="/table/view/{{this}}">{{this}}</a></li>
+							{{/each}}
+						</ul>
+					</div>
+				</li>
+			{{/if}}
+		{{/if}}
 	</ol>
 </header>
