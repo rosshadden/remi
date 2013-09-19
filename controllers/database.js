@@ -1,6 +1,6 @@
 module.exports = {
 	index(req, res) {
-		res.redirect("list")
+		res.redirect("/database/list")
 	},
 
 	list(req, res) {
