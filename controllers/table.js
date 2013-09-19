@@ -15,11 +15,13 @@ module.exports = {
 				app.db.query(`select * from ${table}`)
 			])
 			.spread((cols, rows) => {
-				// rows.forEach((row) => {
-				// 	row.forEach((col) => {
-				// 		log(col instanceof Date);
-				// 	});
-				// });
+				rows.forEach((row) => {
+					for (let col in row) {
+						if (row[col] instanceof Date) {
+							row[col] = new Time(row[col]).isoDate;
+						}
+					}
+				});
 				res.view({ cols, rows });
 			});
 		} else {
