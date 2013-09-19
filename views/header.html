@@ -41,7 +41,7 @@
 							<li><a href="/database/view/{{session.database}}">List Tables</a></li>
 							<li class="divider"></li>
 							{{#each session.tables}}
-								<li {{#iff this "is" ../session.table}}class="active"{{/iff}}><a href="/table/view/{{this}}">{{this}}</a></li>
+								<li {{#iff Name "is" ../session.table}}class="active"{{/iff}}><a href="/table/view/{{Name}}">{{Name}}</a></li>
 							{{/each}}
 						</ul>
 					</div>

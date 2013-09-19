@@ -31,14 +31,9 @@ module.exports = {
 			})
 			.then((err) => {
 				app.db.query(`
-					show tables
+					show table status
 				`)
 				.then((tables) => {
-					tables = tables.map((table) => {
-						for (let key in table) {
-							return table[key];
-						}
-					});
 					req.session.tables = tables;
 
 					res.view({ tables });

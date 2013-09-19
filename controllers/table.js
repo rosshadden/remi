@@ -5,11 +5,12 @@ module.exports = {
 		if (table) {
 			req.session.table = table;
 
-			app.db.query(`
-				select * from ${table}
-			`)
-			.then((rows) => {
-				res.view({ rows });
+			when.all([
+				app.db.query(`describe ${table}`),
+				app.db.query(`select * from ${table}`)
+			])
+			.spread((cols, rows) => {
+				res.view({ cols, rows });
 			});
 		} else {
 			res.redirect(`/database/view/${req.session.database}`);
