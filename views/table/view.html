@@ -19,4 +19,13 @@
 			</tr>
 		{{/each}}
 	</tbody>
+       <tfoot>
+                <tr>
+                        {{#each cols}}
+                                <th {{#iff Key "is" "PRI"}}class="text-primary"{{/iff}}>
+                                        {{Field}}&nbsp;<small class="text-muted">{{Type}}</small>
+                                </th>
+                        {{/each}}
+                </tr>
+        </tfoot>
 </table>
