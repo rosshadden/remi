@@ -15,7 +15,8 @@ module.exports = {
 			rows.forEach((row) => {
 				for (let col in row) {
 					if (row[col] instanceof Date) {
-						row[col] = new Time(row[col]).isoDate;
+						let time = new Time(row[col]);
+						row[col] = `${time.isoDate} ${time.isoTime.slice(0, -4)}`;
 					}
 				}
 			});
