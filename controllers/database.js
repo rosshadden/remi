@@ -23,24 +23,22 @@ module.exports = {
 		var database = req.params.id;
 		delete req.session.table;
 
-		if (database) {
-			req.session.database = database;
+		if (!database) return res.redirect("/database/list");
 
-			app.db.change({
-				database
-			})
-			.then((err) => {
-				app.db.query(`
-					show table status
-				`)
-				.then((tables) => {
-					req.session.tables = tables;
+		req.session.database = database;
 
-					res.view({ tables });
-				});
+		app.db.change({
+			database
+		})
+		.then((err) => {
+			app.db.query(`
+				show table status
+			`)
+			.then((tables) => {
+				req.session.tables = tables;
+
+				res.view({ tables });
 			});
-		} else {
-			res.redirect("/database/list");
-		}
+		});
 	}
 };
