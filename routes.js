@@ -8,12 +8,15 @@ var routes = {
 
 	"/:database/:table?"(req, res, next) {
 		var def;
+		var {database, table} = req.params;
 		if (
-			!app.config.db.database && req.params.database !== "database" ||
-			app.config.db.database !== req.params.database
+			!app.config.db.database && database !== "database" ||
+			app.config.db.database !== database
 		) {
-			def = app.db.change({ database: req.params.database })
+			def = app.db.change({ database })
 		}
+		req.state = { database, table };
+		res.locals({ state: req.state });
 		when(def).then(next);
 	},
 
@@ -31,7 +34,6 @@ var routes = {
 
 		if (~["database", "table"].indexOf(database)) return next();
 
-		req.session.database = database;
 		req.url = `/table/view/${table}`;
 		next();
 	}

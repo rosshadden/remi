@@ -2,9 +2,7 @@ module.exports = {
 	view(req, res) {
 		var table = req.params.id;
 
-		if (!table) return res.redirect(`/database/view/${req.session.database}`);
-
-		req.session.table = table;
+		if (!table) return res.redirect(`/database/view/${req.state.database}`);
 
 		when.all([
 			app.db.query(`describe ${table}`),

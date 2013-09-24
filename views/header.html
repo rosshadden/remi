@@ -10,8 +10,8 @@
 			<li>
 				<div class="btn-group">
 					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-						{{#if session.database}}
-							{{session.database}}
+						{{#if state.database}}
+							{{state.database}}
 						{{else}}
 							Databases
 						{{/if}}
@@ -21,7 +21,7 @@
 						<li><a href="/">List Databases</a></li>
 						<li class="divider"></li>
 						{{#each session.databases}}
-							<li {{#iff this "is" ../session.database}}class="active"{{/iff}}><a href="/{{this}}">{{this}}</a></li>
+							<li {{#iff this "is" ../state.database}}class="active"{{/iff}}><a href="/{{this}}">{{this}}</a></li>
 						{{/each}}
 					</ul>
 				</div>
@@ -31,17 +31,17 @@
 				<li>
 					<div class="btn-group">
 						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							{{#if session.table}}
-								{{session.table}}
+							{{#if state.table}}
+								{{state.table}}
 							{{else}}
 								Tables
 							{{/if}}
 						</button>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="/{{session.database}}">List Tables</a></li>
+							<li><a href="/{{state.database}}">List Tables</a></li>
 							<li class="divider"></li>
 							{{#each session.tables}}
-								<li {{#iff Name "is" ../session.table}}class="active"{{/iff}}><a href="/{{../session.database}}/{{Name}}">{{Name}}</a></li>
+								<li {{#iff Name "is" ../state.table}}class="active"{{/iff}}><a href="/{{../state.database}}/{{Name}}">{{Name}}</a></li>
 							{{/each}}
 						</ul>
 					</div>
