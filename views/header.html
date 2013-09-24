@@ -18,10 +18,10 @@
 						<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="/database/list">List Databases</a></li>
+						<li><a href="/">List Databases</a></li>
 						<li class="divider"></li>
 						{{#each session.databases}}
-							<li {{#iff this "is" ../session.database}}class="active"{{/iff}}><a href="/database/view/{{this}}">{{this}}</a></li>
+							<li {{#iff this "is" ../session.database}}class="active"{{/iff}}><a href="/{{this}}">{{this}}</a></li>
 						{{/each}}
 					</ul>
 				</div>
@@ -38,10 +38,10 @@
 							{{/if}}
 						</button>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="/database/view/{{session.database}}">List Tables</a></li>
+							<li><a href="/{{session.database}}">List Tables</a></li>
 							<li class="divider"></li>
 							{{#each session.tables}}
-								<li {{#iff Name "is" ../session.table}}class="active"{{/iff}}><a href="/table/view/{{Name}}">{{Name}}</a></li>
+								<li {{#iff Name "is" ../session.table}}class="active"{{/iff}}><a href="/{{../session.database}}/{{Name}}">{{Name}}</a></li>
 							{{/each}}
 						</ul>
 					</div>
