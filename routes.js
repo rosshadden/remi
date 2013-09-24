@@ -2,9 +2,6 @@ var services = app.util.loader.dirSync("services");
 
 var routes = {
 	"/"(req, res, next) {
-		delete req.session.database;
-		delete req.session.table;
-		delete req.session.tables;
 		req.url = "/database/list";
 		next();
 	},
