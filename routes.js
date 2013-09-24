@@ -7,17 +7,14 @@ var routes = {
 	},
 
 	"/:database/:table?"(req, res, next) {
+		var def;
 		if (
 			!app.config.db.database && req.params.database !== "database" ||
 			app.config.db.database !== req.params.database
 		) {
-			app.db.change({
-				database: req.params.database
-			})
-			.then(next);
-		} else {
-			next();
+			def = app.db.change({ database: req.params.database })
 		}
+		when(def).then(next);
 	},
 
 	"/:database"(req, res, next) {
