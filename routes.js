@@ -8,6 +8,17 @@ var routes = {
 		res.view("index");
 	},
 
+	"/:database/:table?"(req, res, next) {
+		if (!app.config.db.database) {
+			app.db.change({
+				database: req.params.database
+			})
+			.then(next);
+		} else {
+			next();
+		}
+	},
+
 	"/:database"(req, res, next) {
 		if (req.params.database === "database") return next();
 
