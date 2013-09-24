@@ -1,11 +1,30 @@
 var services = app.util.loader.dirSync("services");
 
 var routes = {
-	"/": (req, res) => {
+	"/"(req, res) {
 		delete req.session.database;
 		delete req.session.table;
 		delete req.session.tables;
 		res.view("index");
+	},
+
+	"/:database"(req, res, next) {
+		if (req.params.database === "database") return next();
+
+		var database = req.params.database;
+
+		req.url = `/database/view/${database}`;
+		next();
+	},
+
+	"/:database/:table"(req, res, next) {
+		if (~["database", "table"].indexOf(req.params.database)) return next();
+
+		var {database, table} = req.params;
+
+		req.session.database = database;
+		req.url = `/table/view/${table}`;
+		next();
 	}
 };
 

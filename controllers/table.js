@@ -2,7 +2,6 @@ module.exports = {
 	view(req, res) {
 		var table = req.params.id;
 
-		if (!app.config.db.database) return res.redirect("/");
 		if (!table) return res.redirect(`/database/view/${req.session.database}`);
 
 		req.session.table = table;

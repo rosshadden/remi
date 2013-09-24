@@ -22,6 +22,7 @@ module.exports = {
 	view(req, res) {
 		var database = req.params.id;
 		delete req.session.table;
+		log("database", database);
 
 		if (!database) return res.redirect("/database/list");
 
