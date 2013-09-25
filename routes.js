@@ -9,6 +9,8 @@ var routes = {
 	"/:database/:table?"(req, res, next) {
 		var def;
 		var {database, table} = req.params;
+		if (~["list", "view"].indexOf(table)) return next();
+
 		if (
 			!app.config.db.database && database !== "database" ||
 			app.config.db.database !== database
