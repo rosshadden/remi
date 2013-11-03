@@ -1,5 +1,5 @@
 module.exports = {
-	"get tables"(req, res) {
+	tables(req, res) {
 		app.db.change({
 			database: req.query.database
 		})

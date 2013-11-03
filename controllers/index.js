@@ -6,11 +6,8 @@ var routes = {
 		next();
 	},
 
-	"/:database/:table?"(req, res, next) {
+	"/:database/:table?"(req, res, next, database, table) {
 		var def;
-		var {database, table} = req.params;
-		if (~["list", "view"].indexOf(table)) return next();
-
 		if (
 			!app.config.db.database && database !== "database" ||
 			app.config.db.database !== database
@@ -20,24 +17,6 @@ var routes = {
 		req.state = { database, table };
 		res.locals({ state: req.state });
 		when(def).then(next);
-	},
-
-	"/:database"(req, res, next) {
-		var database = req.params.database;
-
-		if (database === "database") return next();
-
-		req.url = `/database/view/${database}`;
-		next();
-	},
-
-	"/:database/:table"(req, res, next) {
-		var {database, table} = req.params;
-
-		if (~["database", "table"].indexOf(database)) return next();
-
-		req.url = `/table/view/${table}`;
-		next();
 	}
 };
 

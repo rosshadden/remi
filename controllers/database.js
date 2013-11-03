@@ -10,16 +10,11 @@ module.exports = {
 		.then((databases) => {
 			databases = databases.map((db) => (db.Database));
 			req.session.databases = databases;
-
 			res.view({ databases });
 		});
 	},
 
-	view(req, res) {
-		var database = req.params.id;
-
-		if (!database) return res.redirect("/database/list");
-
+	"/:database"(req, res, next, database) {
 		app.db.change({
 			database
 		})
@@ -29,8 +24,7 @@ module.exports = {
 			`)
 			.then((tables) => {
 				req.session.tables = tables;
-
-				res.view({ tables });
+				res.view("database/view", { tables });
 			});
 		});
 	}

@@ -1,8 +1,9 @@
 module.exports = {
-	view(req, res) {
-		var table = req.params.id;
+	view(req, res, next, table) {
+	},
 
-		if (!table) return res.redirect(`/database/view/${req.state.database}`);
+	"/:database/:table"(req, res, next, database, table) {
+		if (~["database", "table"].indexOf(database)) return next();
 
 		when.all([
 			app.db.query(`describe ${table}`),
@@ -17,7 +18,7 @@ module.exports = {
 					}
 				}
 			});
-			res.view({ cols, rows });
+			res.view("table/view", { cols, rows });
 		});
 	}
 };

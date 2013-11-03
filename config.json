@@ -1,0 +1,28 @@
+{
+	"name": "REMI",
+	"port": 8080,
+	"db": {
+		"adapter": "mysql",
+		"mysql": {
+			"host": "localhost",
+			"user": "root",
+			"password": "root"
+		}
+	},
+	"env": {
+		"development": {
+			"debug": true
+		},
+		"remote": {
+			"debug": true,
+			"db": {
+				"adapter": "mysql",
+				"mysql": {
+					"host": "surrogate.connectai.com",
+					"user": "dev",
+					"password": "dev"
+				}
+			}
+		}
+	}
+}
