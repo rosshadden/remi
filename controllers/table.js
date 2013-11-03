@@ -1,9 +1,6 @@
 module.exports = {
-	view(req, res, next, table) {
-	},
-
 	"/:database/:table"(req, res, next, database, table) {
-		if (~["database", "table"].indexOf(database)) return next();
+		if (~Object.keys(app.controllers).indexOf(database)) return next();
 
 		when.all([
 			app.db.query(`describe ${table}`),

@@ -16,6 +16,8 @@ module.exports = {
 	},
 
 	"/:database"(req, res, next, database) {
+		if (~Object.keys(app.controllers).indexOf(database)) return next();
+
 		app.db.change({
 			database
 		})

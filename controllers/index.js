@@ -7,7 +7,7 @@ var routes = {
 	},
 
 	"/:database/:table?"(req, res, next, database, table) {
-		if (database === "database") return next();
+		if (~Object.keys(app.controllers).indexOf(database)) return next();
 
 		var def;
 		if (
