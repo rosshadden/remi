@@ -10,6 +10,7 @@ module.exports = {
 		.then((databases) => {
 			databases = databases.map((db) => (db.Database));
 			req.session.databases = databases;
+			delete req.session.tables;
 			res.view({ databases });
 		});
 	},

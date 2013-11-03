@@ -7,6 +7,8 @@ var routes = {
 	},
 
 	"/:database/:table?"(req, res, next, database, table) {
+		if (database === "database") return next();
+
 		var def;
 		if (
 			!app.config.db.database && database !== "database" ||
