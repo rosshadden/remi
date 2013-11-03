@@ -1,0 +1,12 @@
+{{#if database}}
+	<div class="alert alert-info">Using database <code>{{database}}</code>.</div>
+{{/if}}
+
+<textarea id="query" name="query" class="form-control" rows="8">{{#if table}}SELECT * FROM {{table}};{{/if}}</textarea>
+
+<div class="text-center">
+	<button class="btn btn-primary">
+		<span class="glyphicon glyphicon-road"></span>
+		Run
+	</button>
+</div>

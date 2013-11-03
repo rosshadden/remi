@@ -4,7 +4,12 @@
 	</div>
 
 	<div class="clearfix">
-		<a href="/query" class="pull-right">Query</a>
+		<a
+			href="/query/run{{#if state.database}}/{{state.database}}{{/if}}{{#if state.table}}/{{state.table}}{{/if}}"
+			class="pull-right"
+		>
+			Query
+		</a>
 	</div>
 
 	<ol class="breadcrumb">
