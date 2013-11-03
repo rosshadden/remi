@@ -6,8 +6,14 @@ module.exports = {
 			res.view({ database, table });
 		},
 
-		post(req, res, next) {
-			res.json(false);
+		post(req, res, next, database, table) {
+			app.db.change({ database })
+			.then(() => {
+				app.db.query(req.body.query)
+				.then((rows) => {
+					res.json(rows);
+				});
+			})
 		}
 	}
 };
