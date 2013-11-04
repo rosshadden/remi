@@ -2,9 +2,13 @@
 	<thead>
 		<tr>
 			{{#each cols}}
-				<th {{#iff Key "is" "PRI"}}class="text-primary"{{/iff}}>
-					{{Field}}&nbsp;<small class="text-muted">{{Type}}</small>
-				</th>
+				{{#if Field}}
+					<th {{#iff Key "is" "PRI"}}class="text-primary"{{/iff}}>
+						{{Field}}&nbsp;<small class="text-muted">{{Type}}</small>
+					</th>
+				{{else}}
+					<th>{{this}}</th>
+				{{/if}}
 			{{/each}}
 		</tr>
 	</thead>

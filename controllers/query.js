@@ -9,14 +9,9 @@ module.exports = {
 		post(req, res, next, database, table) {
 			app.db.change({ database })
 			.then(() => {
-				when.all([
-					app.db.query(`describe ${table}`),
-					app.db.query(req.body.query)
-				])
-				.spread((cols, rows) => {
-					if (rows.length) {
-						cols = cols.filter((col) => !!~Object.keys(rows[0]).indexOf(col.Field));
-					}
+				app.db.query(req.body.query)
+				.then((rows) => {
+					var cols = (rows.length) ? Object.keys(rows[0]) : [];
 					rows.forEach((row) => {
 						for (let col in row) {
 							if (row[col] instanceof Date) {
