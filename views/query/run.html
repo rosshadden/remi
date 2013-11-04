@@ -5,6 +5,8 @@
 
 {{#if database}}
 	<div class="alert alert-info">Using database <code>{{database}}</code>.</div>
+{{else}}
+	<div class="alert alert-warning">You are not currently using any database.</div>
 {{/if}}
 
 <textarea id="query" name="query" class="form-control" rows="8">{{#if table}}SELECT * FROM {{table}};{{/if}}</textarea>
