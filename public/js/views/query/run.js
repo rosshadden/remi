@@ -3,6 +3,10 @@
 
 	var tableTemplate = Handlebars.compile($("#tableTemplate").text());
 
+	KeyboardJS.on("ctrl+enter", function() {
+		$("#run").trigger("click");
+	});
+
 	$("#run").on("click", function() {
 		var query = $("#query").val();
 		$.post("", { query: query })
