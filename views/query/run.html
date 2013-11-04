@@ -9,7 +9,7 @@
 	<div class="alert alert-warning">You are not currently using any database.</div>
 {{/if}}
 
-<textarea id="query" name="query" class="form-control" rows="8">{{#if table}}SELECT * FROM {{table}};{{/if}}</textarea>
+<textarea id="query" name="query" class="form-control" rows="8">{{#if table}}SELECT * FROM `{{table}}`;{{/if}}</textarea>
 
 <div class="text-center">
 	<button id="run" class="btn btn-primary">

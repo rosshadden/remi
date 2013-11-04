@@ -3,8 +3,8 @@ module.exports = {
 		if (~Object.keys(app.controllers).indexOf(database)) return next();
 
 		when.all([
-			app.db.query(`describe ${table}`),
-			app.db.query(`select * from ${table}`)
+			app.db.query(`describe \`${table}\``),
+			app.db.query(`select * from \`${table}\``)
 		])
 		.spread((cols, rows) => {
 			rows.forEach((row) => {
