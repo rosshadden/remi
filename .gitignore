@@ -1,3 +1,4 @@
 node_modules
 app.log
 *fuse_hidden*
+public/css/main.css

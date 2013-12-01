@@ -3,11 +3,28 @@
 		<h1>REMI <small>Ross' Enticing MySQL Interface</small></h1>
 	</div>
 
-	<div class="clearfix">
+	<div class="text-right">
+		<a
+			href="/data/import{{#if state.database}}/{{state.database}}{{/if}}{{#if state.table}}/{{state.table}}{{/if}}"
+			class="btn btn-default"
+		>
+			<span class="glyphicon glyphicon-import"></span>
+			Import
+		</a>
+
+		<a
+			href="/data/export{{#if state.database}}/{{state.database}}{{/if}}{{#if state.table}}/{{state.table}}{{/if}}"
+			class="btn btn-default"
+		>
+			<span class="glyphicon glyphicon-export"></span>
+			Export
+		</a>
+
 		<a
 			href="/query/run{{#if state.database}}/{{state.database}}{{/if}}{{#if state.table}}/{{state.table}}{{/if}}"
-			class="pull-right"
+			class="btn btn-default"
 		>
+			<span class="glyphicon glyphicon-search"></span>
 			Query
 		</a>
 	</div>
